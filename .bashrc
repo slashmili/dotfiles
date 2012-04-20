@@ -12,8 +12,9 @@ function proml {
   local   LIGHT_RED="\[\033[1;31m\]"
   local       GREEN="\[\033[0;32m\]"
   local LIGHT_GREEN="\[\033[1;32m\]"
-  local       WHITE="\[\033[1;37m\]"
+  local    WHITE_BR="\[\033[1;37m\]"
   local  LIGHT_GRAY="\[\033[0;37m\]"
+  local       WHITE="\[\033[00m\]"
   case $TERM in
     xterm*)
     TITLEBAR='\[\033]0;\u@\h:\w\007\]'
@@ -24,9 +25,9 @@ function proml {
   esac
 
 PS1="${TITLEBAR}\
-$BLUE[$RED\$(date +%H:%M)$BLUE]\
-$BLUE[$RED\u@\h:\w$GREEN\$(__git_ps1 \" (%s)\")$BLUE]\
-$GREEN\$ "
+$BLUE[$WHITE_BR\$(date +%H:%M)$BLUE]\
+$BLUE[$RED\u@\h:\W$GREEN\$(__git_ps1 \" (%s)\")$BLUE]$WHITE\
+\$ "
 PS2='> '
 PS4='+ '
 }
