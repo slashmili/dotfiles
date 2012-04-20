@@ -1,3 +1,7 @@
+filetype off
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+
 filetype on
 filetype plugin on
 filetype indent on
@@ -70,3 +74,63 @@ augroup resCur
     autocmd BufWinEnter * call ResCur()
   endif
 augroup END
+
+"Code Folding
+set foldmethod=indent
+set foldlevel=99
+
+"Window Splits
+Vertical Split : Ctrl+w + v
+Horizontal Split: Ctrl+w + s
+Close current windows: Ctrl+w + q
+map <c-j> <c-w>j
+map <c-k> <c-w>k
+map <c-l> <c-w>l
+map <c-h> <c-w>h
+
+"Task lists
+map <leader>td <Plug>TaskList
+
+"Revision History
+map <leader>g :GundoToggle<CR>
+
+
+"Syntax Highlighting and Validation
+syntax on                      " syntax highlighing
+filetype on                    " try to detect filetypes
+filetype plugin indent on      " enable loading indent file for filetype
+
+let g:pyflakes_use_quickfix = 0
+
+"Pep8
+let g:pep8_map='<leader>8'
+
+"Tab Completion and Documentation
+au FileType python set omnifunc=pythoncomplete#Complete
+let g:SuperTabDefaultCompletionType = "context"
+set completeopt=menuone,longest,preview
+
+
+"File Browser
+map <leader>n :NERDTreeToggle<CR>
+
+"Refactoring and Go to definition
+map <leader>j :RopeGotoDefinition<CR>
+map <leader>r :RopeRename<CR>
+"Searching
+nmap <leader>a <Esc>:Ack!
+
+"GIT
+"%{fugitive#statusline()}
+
+" Add the virtualenv's site-packages to vim path
+py << EOF
+import os.path
+import sys
+import vim
+if 'VIRTUAL_ENV' in os.environ:
+    project_base_dir = os.environ['VIRTUAL_ENV']
+    sys.path.insert(0, project_base_dir)
+    activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+    execfile(activate_this, dict(__file__=activate_this))
+EOF
