@@ -80,9 +80,9 @@ set foldmethod=indent
 set foldlevel=99
 
 "Window Splits
-Vertical Split : Ctrl+w + v
-Horizontal Split: Ctrl+w + s
-Close current windows: Ctrl+w + q
+"Vertical Split : Ctrl+w + v
+"Horizontal Split: Ctrl+w + s
+"Close current windows: Ctrl+w + q
 map <c-j> <c-w>j
 map <c-k> <c-w>k
 map <c-l> <c-w>l
