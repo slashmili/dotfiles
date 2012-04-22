@@ -47,3 +47,6 @@
 [submodule ".vim/bundle/pyflakes-pathogen"]
 	path = .vim/bundle/pyflakes-pathogen
 	url = https://github.com/mitechie/pyflakes-pathogen.git
+[submodule ".vim/bundle/coffee-script"]
+	path = .vim/bundle/coffee-script
+	url = https://github.com/kchmck/vim-coffee-script.git
