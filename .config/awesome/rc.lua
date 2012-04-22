@@ -123,16 +123,16 @@ mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
 mytextclock = awful.widget.textclock({ align = "right" })
 
 netwidget = widget({ type = "textbox" })
- vicious.register(netwidget, vicious.widgets.net, '<span color="#CC9393">${eth1 down_kb}</span> <span color="#7F9F7F">${eth1 up_kb}</span>', 3)
+ vicious.register(netwidget, vicious.widgets.net, '<span color="#CC9393">IN ${eth1 down_kb}</span> <span color="#7F9F7F">OUT ${eth1 up_kb}</span>', 3)
  
 -- Create a systray
 mysystray = widget({ type = "systray" })
 
 memwidget = widget({ type = "textbox" })
-vicious.register(memwidget, vicious.widgets.mem, " $1% MEM ", 13)
+vicious.register(memwidget, vicious.widgets.mem, " MEM $1% ", 13)
 
 cpuwidget = widget({ type = "textbox" })
-vicious.register(cpuwidget, vicious.widgets.cpu, " $1% CPU ")
+vicious.register(cpuwidget, vicious.widgets.cpu, " CPU $1% ")
 
 -- Create a wibox for each screen and add it
 mywibox = {}
