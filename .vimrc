@@ -122,6 +122,8 @@ map <leader>r :RopeRename<CR>
 "Searching
 nmap <leader>a <Esc>:Ack!
 
+"Clear search highlight
+nmap <C-l> :nohlsearch<CR>
 "GIT
 "%{fugitive#statusline()}
 
