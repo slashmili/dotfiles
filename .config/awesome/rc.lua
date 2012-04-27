@@ -10,6 +10,7 @@ require("naughty")
 -- Load Debian menu entries
 require("debian.menu")
 require("vicious")
+require("battery")
 
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
@@ -134,6 +135,13 @@ vicious.register(memwidget, vicious.widgets.mem, " MEM $1% ", 13)
 cpuwidget = widget({ type = "textbox" })
 vicious.register(cpuwidget, vicious.widgets.cpu, " CPU $1% ")
 
+
+awful.hooks.timer.register(20, function()
+      batteryInfo("BAT1")
+end)
+
+batterywidget = widget({type = "textbox", name = "batterywidget", align = "right" })
+
 -- Create a wibox for each screen and add it
 mywibox = {}
 mypromptbox = {}
@@ -212,7 +220,8 @@ for s = 1, screen.count() do
         mytextclock,
         memwidget,
         cpuwidget,
-	netwidget,
+        netwidget,
+        batterywidget,
         kbdcfg.widget,
         s == 1 and mysystray or nil,
         mytasklist[s],
