@@ -26,8 +26,11 @@ function proml {
 
 PS1="${TITLEBAR}\
 $BLUE[$WHITE_BR\$(date +%H:%M)$BLUE]\
-$BLUE[$RED\u@\h:\W$GREEN\$(__git_ps1 \" (%s)\")$BLUE]$WHITE\
+$BLUE[$RED\u:\W$GREEN\$(__git_ps1 \" (%s)\")$BLUE]$WHITE\
 \$ "
+#use \h for hostname
+#use \w for full dir name
+
 PS2='> '
 PS4='+ '
 }
