@@ -7,8 +7,9 @@ filetype plugin on
 filetype indent on
 syntax on
 
-set statusline=%F%m%r%h%w\ [%{&ff}]\ %y\ [Line=%04l,CHR=%03c(%03v)]\ [%p%%]\ [LEN=%L]
+"set statusline=%F%m%r%h%w\ [%{&ff}]\ %y\ [Line=%04l,CHR=%03c(%03v)]\ [%p%%]\ [LEN=%L]
 set laststatus=2 " Enables the status line at the bottom of Vim
+
 
 set nocompatible
 set autoindent
@@ -22,6 +23,10 @@ set ignorecase
 set hidden
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 colorscheme slate
+
+"http://www.vim.org/scripts/script.php?script_id=3881
+let g:Powerline_symbols = 'fancy'
+set t_Co=256
 
 
 "http://www.vim.org/scripts/script.php?script_id=95 : A windows style
