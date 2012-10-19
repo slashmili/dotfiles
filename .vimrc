@@ -37,8 +37,14 @@ let Tlist_Inc_Winwidth = 0
 map <F3> :Tlist<CR>
 
 
-map <C-t> :FufCoverageFile<CR>
-map <Leader>t :FufBuffer<CR>
+map <Leader>t :CtrlPBuffer<CR>
+let g:ctrlp_map = '<C-t>'
+let g:ctrlp_working_path_mode = 0
+let g:ctrlp_custom_ignore = {
+    \ 'dir':  '\v\c\.(git|svn)$',
+    \ 'file': '\v\c\.(swf|bak|png|gif|js|mov|ico|jpg|pdf|jrxml)$',
+    \}
+
 
 "Restore cursor to file position in previous editing session
 "http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
