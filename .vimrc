@@ -22,6 +22,15 @@ set wildmenu
 set ignorecase
 set hidden
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+set number
+
+
+"highlight cursor line and column
+set cursorline
+highlight   CursorLine    term=NONE    cterm=bold ctermbg=darkgray
+set cursorcolumn
+highlight   CursorColumn    term=NONE    cterm=bold ctermbg=darkgray
+
 colorscheme slate
 
 "http://www.vim.org/scripts/script.php?script_id=3881
