@@ -48,7 +48,8 @@ map <F3> :Tlist<CR>
 vmap <F7> "*y
 map <S-F7> :r!xclip -o<CR>
 
-map <C-o> :FufCoverageFile<CR>
+map <C-t> :FufCoverageFile<CR>
+map <Leader>t :FufBuffer<CR>
 map <S-M-Right> :tabnext<CR>
 map <S-M-Left> :tabprevious<CR>
 
@@ -171,3 +172,7 @@ function! <SID>StripTrailingWhitespace()
 endfunction
 nmap <silent> <Leader><space> :call <SID>StripTrailingWhitespace()<CR>
 
+"map ii to go to normal mode
+imap ii <Esc>
+"map ctrl+d to save the file
+imap <C-d> <Esc>:w<CR>

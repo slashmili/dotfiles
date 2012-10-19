@@ -25,11 +25,9 @@ function proml {
   esac
 
 PS1="${TITLEBAR}\
-$BLUE[$WHITE_BR\$(date +%H:%M)$BLUE]\
-$BLUE[$RED\u:\W$GREEN\$(__git_ps1 \" (%s)\")$BLUE]$WHITE\
-\$ "
-#use \h for hostname
-#use \w for full dir name
+$BLUE[$RED\u@\h:\w$GREEN\$(__git_ps1 \" (%s)\")$BLUE]$WHITE
+$BLUE[$WHITE_BR\\T$BLUE]$WHITE\
+> "
 
 PS2='> '
 PS4='+ '
