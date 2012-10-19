@@ -16,7 +16,6 @@ set autoindent
 set incsearch
 set nohlsearch
 set fdm=marker
-set viminfo='10,\"100,:20,%,n~/.viminfo
 set hlsearch
 set wildmenu
 set ignorecase
@@ -25,33 +24,21 @@ set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 set number
 
 
-"highlight cursor line and column
-set cursorline
-highlight   CursorLine    term=NONE    cterm=bold ctermbg=darkgray
-set cursorcolumn
-highlight   CursorColumn    term=NONE    cterm=bold ctermbg=darkgray
-
 colorscheme slate
+
 
 "http://www.vim.org/scripts/script.php?script_id=3881
 let g:Powerline_symbols = 'fancy'
 set t_Co=256
 
 
-"http://www.vim.org/scripts/script.php?script_id=95 : A windows style
-map <F2> :WMToggle<CR>
-
 "http://www.vim.org/scripts/script.php?script_id=273 : taglist
 let Tlist_Inc_Winwidth = 0
 map <F3> :Tlist<CR>
 
-vmap <F7> "*y
-map <S-F7> :r!xclip -o<CR>
 
 map <C-t> :FufCoverageFile<CR>
 map <Leader>t :FufBuffer<CR>
-map <S-M-Right> :tabnext<CR>
-map <S-M-Left> :tabprevious<CR>
 
 "Restore cursor to file position in previous editing session
 "http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
@@ -96,17 +83,6 @@ augroup END
 set foldmethod=indent
 set foldlevel=99
 
-"Window Splits
-"Vertical Split : Ctrl+w + v
-"Horizontal Split: Ctrl+w + s
-"Close current windows: Ctrl+w + q
-map <c-j> <c-w>j
-map <c-k> <c-w>k
-map <c-l> <c-w>l
-map <c-h> <c-w>h
-
-"Task lists
-map <leader>td <Plug>TaskList
 
 "Revision History
 map <leader>g :GundoToggle<CR>
@@ -126,10 +102,6 @@ let g:pep8_map='<leader>8'
 au FileType python set omnifunc=pythoncomplete#Complete
 let g:SuperTabDefaultCompletionType = "context"
 set completeopt=menuone,longest,preview
-
-
-"File Browser
-map <leader>n :NERDTreeToggle<CR>
 
 "Refactoring and Go to definition
 map <leader>j :RopeGotoDefinition<CR>
@@ -176,3 +148,11 @@ nmap <silent> <Leader><space> :call <SID>StripTrailingWhitespace()<CR>
 imap ii <Esc>
 "map ctrl+d to save the file
 imap <C-d> <Esc>:w<CR>
+"highlight cursor line and column
+
+set cursorline
+highlight   CursorLine    term=NONE    cterm=bold ctermbg=darkgray
+"set cursorcolumn
+"set highlight   CursorColumn    term=NONE    cterm=bold ctermbg=darkgray
+
+
