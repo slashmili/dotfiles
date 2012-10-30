@@ -22,7 +22,7 @@ set ignorecase
 set hidden
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 set number
-
+set scrolloff=5
 
 colorscheme slate
 
