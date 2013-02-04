@@ -1,6 +1,6 @@
 export HISTSIZE=2000
 export HISTCONTROL=ignoreboth
-
+source ~/.dotfiles/.git-prompt.sh
 
 function parse_git_branch {
       git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'

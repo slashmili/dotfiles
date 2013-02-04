@@ -150,8 +150,8 @@ function! <SID>StripTrailingWhitespace()
 endfunction
 nmap <silent> <Leader><space> :call <SID>StripTrailingWhitespace()<CR>
 
-"map ii to go to normal mode
-imap ii <Esc>
+"map jj to go to normal mode
+imap jj <Esc>
 "map ctrl+d to save the file
 imap <C-d> <Esc>:w<CR>
 "highlight cursor line and column
