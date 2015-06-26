@@ -3,13 +3,5 @@
 [color]
     ui = auto
 [alias]
-    st = status
-    co = checkout
-    ci = commit
-    rb = rebase
-    gr = log --pretty=\"format:%h %an %s\" --graph
     rebaseme = rebase -p HEAD@{u}
-    fork = !sh -c 'git checkout -t origin/$0' 
-    diffstat= diff --stat -r
     pushme = push origin HEAD
-
