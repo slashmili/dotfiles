@@ -10,8 +10,10 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 Plugin 'bling/vim-airline'
+Plugin 'kien/ctrlp.vim'
+Plugin 'ntpeters/vim-better-whitespace'
 
-
+call vundle#end()
 filetype on
 filetype plugin on
 filetype indent on
@@ -20,6 +22,7 @@ syntax on
 
 set laststatus=2
 
+set nocompatible
 set autoindent
 set incsearch
 set nohlsearch
@@ -31,12 +34,12 @@ set hidden
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 set number
 set scrolloff=5
+set backspace=indent,eol,start
 
 "Restore cursor to file position in previous editing session
 ""http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
 set viminfo='10,\"100,:20,%,n~/.viminfo
 
-Plugin 'kien/ctrlp.vim'
 map <Leader>t :CtrlPBuffer<CR>
 let g:ctrlp_map = '<C-t>'
 let g:ctrlp_working_path_mode = 0
@@ -45,9 +48,7 @@ let g:ctrlp_custom_ignore = {
     \ 'file': '\v\c\.(swf|bak|png|gif|js|mov|ico|jpg|pdf|jrxml)$',
     \}
 
-   
-Plugin 'ntpeters/vim-better-whitespace'
-ToggleWhitespace
+
 nmap <silent> <Leader><space> :StripWhitespace<CR>
 
 
@@ -62,7 +63,7 @@ set cursorcolumn
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
 "Clear search highlight
-nmap <C-l> :nohlsearch<CR>   
+nmap <C-l> :nohlsearch<CR>
 
 "map jj to go to normal mode
 imap jj <Esc>
