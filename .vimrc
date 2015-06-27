@@ -50,10 +50,6 @@ let g:ctrlp_custom_ignore = {
     \}
 
 
-nmap <silent> <Leader><space> :StripWhitespace<CR>
-
-
-
 colorscheme colorfulnight
 set cursorline
 highlight   CursorLine    term=NONE    cterm=bold ctermbg=darkgray
@@ -74,3 +70,6 @@ nmap <C-k> :bd<CR>
 
 "Toggle spell checker
 nnoremap <leader>s :set spell!<CR>
+
+"Clean whitespace at the end of the lines
+nmap <silent> <Leader><space> :StripWhitespace<CR>
