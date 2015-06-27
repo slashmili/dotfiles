@@ -69,6 +69,8 @@ nmap <C-l> :nohlsearch<CR>
 "map jj to go to normal mode
 imap jj <Esc>
 
-
 "Kill the opened buffer
 nmap <C-k> :bd<CR>
+
+"Toggle spell checker
+nnoremap <leader>s :set spell!<CR>
