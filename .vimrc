@@ -14,6 +14,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'tpope/vim-fugitive.git'
 Plugin 'hhvm/vim-hack'
+Plugin 'vim-ruby/vim-ruby'
 
 call vundle#end()
 filetype on
@@ -59,6 +60,9 @@ set cursorcolumn
 
 " :help last-position-jump
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+
+" set 2 space tab for ruby file
+autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
 
 "Clear search highlight
 nmap <C-l> :nohlsearch<CR>
