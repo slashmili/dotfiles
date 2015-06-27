@@ -12,6 +12,7 @@ Plugin 'gmarik/Vundle.vim'
 Plugin 'bling/vim-airline'
 Plugin 'kien/ctrlp.vim'
 Plugin 'ntpeters/vim-better-whitespace'
+Plugin 'tpope/vim-fugitive.git'
 Plugin 'hhvm/vim-hack'
 
 call vundle#end()
