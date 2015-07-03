@@ -15,6 +15,8 @@ Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'tpope/vim-fugitive.git'
 Plugin 'hhvm/vim-hack'
 Plugin 'vim-ruby/vim-ruby'
+Bundle 'joonty/vim-phpqa.git'
+Plugin 'joonty/vdebug'
 
 call vundle#end()
 filetype on
