@@ -49,7 +49,7 @@ map <Leader>t :CtrlPBuffer<CR>
 let g:ctrlp_map = '<C-t>'
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\v\c\.(git|svn)$',
+    \ 'dir':  '\v\c(vendor|\.git|\.svn)$',
     \ 'file': '\v\c\.(swf|bak|png|gif|js|mov|ico|jpg|pdf|jrxml)$',
     \}
 
