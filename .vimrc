@@ -66,6 +66,9 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "norm
 " set 2 space tab for ruby file
 autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
 
+" to open quickfix window after running Ggrep
+autocmd QuickFixCmdPost *grep* cwindow
+
 "Clear search highlight
 nmap <C-l> :nohlsearch<CR>
 
