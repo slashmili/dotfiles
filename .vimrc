@@ -18,6 +18,7 @@ Plugin 'vim-ruby/vim-ruby'
 Bundle 'joonty/vim-phpqa.git'
 Plugin 'joonty/vdebug'
 Plugin 'tpope/vim-surround'
+Plugin 'airblade/vim-gitgutter'
 
 call vundle#end()
 filetype on
