@@ -15,10 +15,10 @@ Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'tpope/vim-fugitive'
 Plugin 'hhvm/vim-hack'
 Plugin 'vim-ruby/vim-ruby'
-Bundle 'joonty/vim-phpqa.git'
 Plugin 'joonty/vdebug'
 Plugin 'tpope/vim-surround'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'scrooloose/syntastic'
 
 call vundle#end()
 filetype on
