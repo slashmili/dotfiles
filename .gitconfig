@@ -4,4 +4,4 @@
     ui = auto
 [alias]
     rebaseme = rebase -p HEAD@{u}
-    pushme = push origin HEAD
+    pushme = push -u origin HEAD
