@@ -19,6 +19,8 @@ Plugin 'joonty/vdebug'
 Plugin 'tpope/vim-surround'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/syntastic'
+Plugin 'avakhov/vim-yaml'
+Plugin 'elixir-lang/vim-elixir'
 
 call vundle#end()
 filetype on
