@@ -87,3 +87,17 @@ nnoremap <leader>s :set spell!<CR>
 
 "Clean whitespace at the end of the lines
 nmap <silent> <Leader><space> :StripWhitespace<CR>
+
+
+"Git Grep shorthand
+func GitGrep(...)
+    let save = &grepprg
+    set grepprg=git\ grep\ -n\ $*
+    let s = 'grep'
+    for i in a:000
+        let s = s . ' ' . i
+    endfor
+    exe s
+    let &grepprg = save
+endfun
+command -nargs=? G call GitGrep(<f-args>)
