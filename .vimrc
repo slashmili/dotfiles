@@ -32,6 +32,7 @@ syntax on
 set laststatus=2
 
 set nocompatible
+se nostartofline
 set autoindent
 set incsearch
 set nohlsearch
@@ -47,13 +48,16 @@ set backspace=indent,eol,start
 
 "Restore cursor to file position in previous editing session
 ""http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
-set viminfo='10,\"100,:20,%,n~/.viminfo
+"set viminfo='10,\"100,:20,%,n~/.viminfo
+" :help last-position-jump
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+
 
 map <Leader>t :CtrlPBuffer<CR>
 let g:ctrlp_map = '<C-t>'
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\v\c(vendor|\.git|\.svn)$',
+    \ 'dir':  '\v\c(node_modules|_build|deps|vendor|\.git|\.svn)$',
     \ 'file': '\v\c\.(swf|bak|png|gif|js|mov|ico|jpg|pdf|jrxml)$',
     \}
 
