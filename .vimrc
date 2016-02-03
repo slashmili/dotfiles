@@ -21,6 +21,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/syntastic'
 Plugin 'avakhov/vim-yaml'
 Plugin 'elixir-lang/vim-elixir'
+Plugin 'terryma/vim-multiple-cursors'
 
 call vundle#end()
 filetype on
@@ -57,8 +58,8 @@ map <Leader>t :CtrlPBuffer<CR>
 let g:ctrlp_map = '<C-t>'
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\v\c(node_modules|_build|deps|vendor|\.git|\.svn)$',
-    \ 'file': '\v\c\.(swf|bak|png|gif|js|mov|ico|jpg|pdf|jrxml)$',
+    \ 'dir':  '\v\c(node_modules|_build|priv|deps|vendor|\.git|\.svn)$',
+    \ 'file': '\v\c\.(swf|bak|png|gif|mov|ico|jpg|pdf|jrxml)$',
     \}
 
 
