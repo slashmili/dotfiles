@@ -165,10 +165,10 @@ Airline comes with some user-defined autocommands.
 CUSTOMIZATION                                        *airline-customization*
 
 The following are some unicode symbols for customizing the left/right
-separators, as well as the powerline font glyths.
+separators, as well as the powerline font glyphs.
 
 Note: You must define the dictionary first before setting values. Also, it's a
-good idea to check whether if it exists as to avoid accidentally overwritting
+good idea to check whether it exists as to avoid accidentally overwriting
 its contents. >
   if !exists('g:airline_symbols')
     let g:airline_symbols = {}
@@ -239,7 +239,7 @@ Most extensions are enabled by default and lazily loaded when the
 corresponding plugin (if any) is detected.
 
 By default, airline will attempt to load any extension it can find in the
-'runtimepath'.  On some systems this can result in an undersirable startup
+'runtimepath'.  On some systems this can result in an undesirable startup
 cost.  You can disable the check with the following flag. >
   let g:airline#extensions#disable_rtp_load = 1
 <
@@ -271,7 +271,7 @@ configuration values that you can use.
   " Note: set to an empty dictionary to disable truncation.
   let g:airline#extensions#default#section_truncate_width = {}
 <
-* configure the layout of the sections by specificing an array of two arrays
+* configure the layout of the sections by specifying an array of two arrays
   (first array is the left side, second array is the right side). >
   let g:airline#extensions#default#layout = [
       \ [ 'a', 'b', 'c' ],
@@ -320,8 +320,12 @@ vcscommand   <http://www.vim.org/scripts/script.php?script_id=90>
   " default value leaves the name unmodifed
   let g:airline#extensions#branch#format = 0
 
-  " to only show the tail, e.g. a branch 'feature/foo' show 'foo'
+  " to only show the tail, e.g. a branch 'feature/foo' becomes 'foo', use
   let g:airline#extensions#branch#format = 1
+
+  " to truncate all path sections but the last one, e.g. a branch
+  " 'foo/bar/baz' becomes 'f/b/baz', use
+  let g:airline#extensions#branch#format = 2
 
   " if a string is provided, it should be the name of a function that
   " takes a string and returns the desired value
@@ -401,6 +405,17 @@ eclim <https://eclim.org>
   |airline-syntastic| extension. >
   let g:airline#extensions#eclim#enabled = 1
 
+-------------------------------------                    *airline-wordcount*
+* enable/disable word counting. >
+  let g:airline#extensions#wordcount#enabled = 1
+<
+* regex of filetypes to enable word counting. >
+  " the default value matches filetypes typically used for documentation
+  " such as markdown and help files.
+  let g:airline#extensions#wordcount#filetypes = ...
+  (default: markdown,rst,org,help,text)
+
+<
 -------------------------------------                   *airline-whitespace*
 * enable/disable detection of whitespace errors. >
   let g:airline#extensions#whitespace#enabled = 1
@@ -422,7 +437,7 @@ eclim <https://eclim.org>
   let g:airline#extensions#whitespace#symbol = '!'
 <
 * configure which whitespace checks to enable. >
-  let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing' ]
+  let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'long' ]
 <
 * configure the maximum number of lines where whitespace checking is enabled. >
   let g:airline#extensions#whitespace#max_lines = 20000
@@ -433,6 +448,7 @@ eclim <https://eclim.org>
 * configure the formatting of the warning messages. >
   let g:airline#extensions#whitespace#trailing_format = 'trailing[%s]'
   let g:airline#extensions#whitespace#mixed_indent_format = 'mixed-indent[%s]'
+  let g:airline#extensions#whitespace#long_format = 'long[%s]'
 <
 -------------------------------------                      *airline-tabline*
 * enable/disable enhanced tabline. >
@@ -446,7 +462,10 @@ eclim <https://eclim.org>
 <
 * configure filename match rules to exclude from the tabline. >
   let g:airline#extensions#tabline#excludes = []
-<
+
+* enable/disable display preview window buffer in the tabline.
+  let g:airline#extensions#tabline#exclude_preview = 1
+
 * configure how numbers are displayed in tab mode. >
   let g:airline#extensions#tabline#tab_nr_type = 0 " # of splits (default)
   let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
@@ -486,7 +505,11 @@ exposed.
   endfunction
   let g:airline#extensions#tabline#formatter = 'foo'
 <
+
   Note: the following variables are only used by the 'default' formatter.
+  When no disambiguation is needed, both 'unique_tail_improved' and
+  'unique_tail' delegate formatting to 'default', so these variables also
+  control rendering of unique filenames when using these formatters.
 
     * configure whether buffer numbers should be shown. >
       let g:airline#extensions#tabline#buffer_nr_show = 0
@@ -611,7 +634,7 @@ vim-ctrlspace <https://github.com/szw/vim-ctrlspace>
 ==============================================================================
 ADVANCED CUSTOMIZATION                      *airline-advanced-customization*
 
-The defaults will accomodate the mass majority of users with minimal
+The defaults will accommodate the mass majority of users with minimal
 configuration. However, if you want to reposition sections or contents you can
 do so with built-in helper functions, which makes it possible to create
 sections in a more declarative style.
@@ -706,7 +729,7 @@ the most powerful way to customize the statusline, and sometimes it may be
 easier to go this route than the above methods.
 
 Every section can have two values. The default value is the global `g:`
-variable which is used in the absense of a `w:` value. This makes it very easy
+variable which is used in the absence of a `w:` value. This makes it very easy
 to override only certain parts of the statusline by only defining window-local
 variables for a subset of all sections.
 
@@ -857,7 +880,7 @@ Contributions and pull requests are welcome.
 ==============================================================================
 LICENSE                                                    *airline-license*
 
-MIT License.  Copyright © 2013-2015 Bailey Ling.
+MIT License.  Copyright © 2013-2016 Bailey Ling.
 
 
  vim:tw=78:ts=8:ft=help:norl:

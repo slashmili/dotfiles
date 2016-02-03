@@ -1,4 +1,4 @@
-" MIT License. Copyright (c) 2013-2015 Bailey Ling.
+" MIT License. Copyright (c) 2013-2016 Bailey Ling.
 " vim: et ts=2 sts=2 sw=2
 
 let s:has_fugitive = exists('*fugitive#head')
@@ -13,6 +13,10 @@ let s:head_format = get(g:, 'airline#extensions#branch#format', 0)
 if s:head_format == 1
   function! s:format_name(name)
     return fnamemodify(a:name, ':t')
+  endfunction
+elseif s:head_format == 2
+  function! s:format_name(name)
+    return pathshorten(a:name)
   endfunction
 elseif type(s:head_format) == type('')
   function! s:format_name(name)

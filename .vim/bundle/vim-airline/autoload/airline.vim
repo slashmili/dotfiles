@@ -1,4 +1,4 @@
-" MIT License. Copyright (c) 2013-2015 Bailey Ling.
+" MIT License. Copyright (c) 2013-2016 Bailey Ling.
 " vim: et ts=2 sts=2 sw=2
 
 let g:airline_statusline_funcrefs = get(g:, 'airline_statusline_funcrefs', [])
@@ -88,6 +88,9 @@ function! airline#switch_matching_theme()
 endfunction
 
 function! airline#update_statusline()
+  if airline#util#getwinvar(winnr(), 'airline_disabled', 0)
+    return
+  endif
   for nr in filter(range(1, winnr('$')), 'v:val != winnr()')
     if airline#util#getwinvar(nr, 'airline_disabled', 0)
       continue

@@ -1,4 +1,4 @@
-" MIT License. Copyright (c) 2013-2015 Bailey Ling.
+" MIT License. Copyright (c) 2013-2016 Bailey Ling.
 " vim: et ts=2 sts=2 sw=2
 
 let s:ext = {}
@@ -204,6 +204,10 @@ function! airline#extensions#load()
 
   if (get(g:, 'airline#extensions#whitespace#enabled', 1) && get(g:, 'airline_detect_whitespace', 1))
     call airline#extensions#whitespace#init(s:ext)
+  endif
+
+  if get(g:, 'airline#extensions#wordcount#enabled', 1)
+    call airline#extensions#wordcount#init(s:ext)
   endif
 
   if get(g:, 'airline#extensions#tabline#enabled', 0)

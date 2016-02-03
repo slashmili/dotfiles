@@ -1,4 +1,4 @@
-" MIT License. Copyright (c) 2013-2015 Bailey Ling.
+" MIT License. Copyright (c) 2013-2016 Bailey Ling.
 " vim: et ts=2 sts=2 sw=2
 
 let s:show_buffers = get(g:, 'airline#extensions#tabline#show_buffers', 1)
@@ -34,7 +34,7 @@ function! airline#extensions#tabline#autoshow#on()
 
     " Invalidate cache.  This has to come after the BufUnload for
     " s:show_buffers, to invalidate the cache for BufEnter.
-    autocmd BufAdd,BufUnload * call airline#extensions#tabline#buflist#invalidate()
+    autocmd BufLeave,BufAdd,BufUnload * call airline#extensions#tabline#buflist#invalidate()
   augroup END
 endfunction
 
