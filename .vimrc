@@ -93,6 +93,8 @@ nnoremap <leader>s :set spell!<CR>
 "Clean whitespace at the end of the lines
 nmap <silent> <Leader><space> :StripWhitespace<CR>
 
+"Break the line from cursor
+map <C-j> i<CR><Esc>
 
 "Git Grep shorthand
 func GitGrep(...)
