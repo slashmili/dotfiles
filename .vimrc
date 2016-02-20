@@ -97,7 +97,7 @@ nmap <silent> <Leader><space> :StripWhitespace<CR>
 map <C-j> i<CR><Esc>
 
 "Git Grep shorthand
-func GitGrep(...)
+func! GitGrep(...)
     let save = &grepprg
     set grepprg=git\ grep\ -n\ $*
     let s = 'grep'
@@ -107,4 +107,4 @@ func GitGrep(...)
     exe s
     let &grepprg = save
 endfun
-command -nargs=? G call GitGrep(<f-args>)
+command! -nargs=? G call GitGrep(<f-args>)
