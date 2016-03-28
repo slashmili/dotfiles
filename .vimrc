@@ -95,16 +95,3 @@ nmap <silent> <Leader><space> :StripWhitespace<CR>
 
 "Break the line from cursor
 map <C-j> i<CR><Esc>
-
-"Git Grep shorthand
-func! GitGrep(...)
-    let save = &grepprg
-    set grepprg=git\ grep\ -n\ $*
-    let s = 'grep'
-    for i in a:000
-        let s = s . ' ' . i
-    endfor
-    exe s
-    let &grepprg = save
-endfun
-command! -nargs=? G call GitGrep(<f-args>)
