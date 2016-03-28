@@ -95,3 +95,6 @@ nmap <silent> <Leader><space> :StripWhitespace<CR>
 
 "Break the line from cursor
 map <C-j> i<CR><Esc>
+
+"Jump to home in Vim's command line
+cnoremap <C-a>  <Home>
