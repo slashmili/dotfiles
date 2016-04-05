@@ -79,22 +79,22 @@ autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
 autocmd QuickFixCmdPost *grep* cwindow
 
 "Clear search highlight
-nmap <C-l> :nohlsearch<CR>
+nnoremap <C-l> :nohlsearch<CR>
 
 "map jj to go to normal mode
-imap jj <Esc>
+inoremap jj <Esc>
 
 "Kill the opened buffer
-nmap <C-k> :bd<CR>
+nnoremap <C-k> :bd<CR>
 
 "Toggle spell checker
 nnoremap <leader>s :set spell!<CR>
 
 "Clean whitespace at the end of the lines
-nmap <silent> <Leader><space> :StripWhitespace<CR>
+nnoremap <silent> <Leader><space> :StripWhitespace<CR>
 
 "Break the line from cursor
-map <C-j> i<CR><Esc>
+nnoremap <C-j> i<CR><Esc>
 
 "Jump to home in Vim's command line
 cnoremap <C-a>  <Home>
