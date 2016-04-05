@@ -22,6 +22,7 @@ Plugin 'scrooloose/syntastic'
 Plugin 'avakhov/vim-yaml'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'terryma/vim-multiple-cursors'
+Plugin 'morhetz/gruvbox'
 
 call vundle#end()
 filetype on
@@ -63,9 +64,10 @@ let g:ctrlp_custom_ignore = {
     \}
 
 
-colorscheme colorfulnight
+set background=dark
+colorscheme gruvbox
 set cursorline
-highlight   CursorLine    term=NONE    cterm=bold ctermbg=darkgray
+highlight   CursorLine    term=NONE    cterm=bold
 set cursorcolumn
 
 
