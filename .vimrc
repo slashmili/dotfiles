@@ -8,7 +8,7 @@ call vundle#begin()
 "call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 Plugin 'bling/vim-airline'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'ntpeters/vim-better-whitespace'
@@ -25,9 +25,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'morhetz/gruvbox'
 
 call vundle#end()
-filetype on
-filetype plugin on
-filetype indent on
+filetype plugin indent on
 syntax on
 
 

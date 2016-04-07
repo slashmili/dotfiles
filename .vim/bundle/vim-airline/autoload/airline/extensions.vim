@@ -150,7 +150,7 @@ function! airline#extensions#load()
     call airline#extensions#ctrlp#init(s:ext)
   endif
 
-  if get(g:, 'ctrlspace_loaded', 0)
+  if get(g:, 'CtrlSpaceLoaded', 0)
     call airline#extensions#ctrlspace#init(s:ext)
   endif
 
@@ -208,6 +208,10 @@ function! airline#extensions#load()
 
   if get(g:, 'airline#extensions#whitespace#enabled', 1)
     call airline#extensions#whitespace#init(s:ext)
+  endif
+
+  if get(g:, 'airline#extensions#po#enabled', 1) && executable('msgfmt')
+    call airline#extensions#po#init(s:ext)
   endif
 
   if get(g:, 'airline#extensions#wordcount#enabled', 1)
