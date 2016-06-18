@@ -97,3 +97,7 @@ nnoremap <C-j> i<CR><Esc>
 
 "Jump to home in Vim's command line
 cnoremap <C-a>  <Home>
+
+"vimrc config helpers
+nnoremap <Leader>e :e ~/.vimrc<CR>
+nnoremap <Leader>r :source ~/.vimrc<CR>
