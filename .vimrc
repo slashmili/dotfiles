@@ -23,6 +23,7 @@ Plugin 'avakhov/vim-yaml'
 Plugin 'elixir-lang/vim-elixir'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'morhetz/gruvbox'
+Plugin 'slashmili/alchemist.vim'
 
 call vundle#end()
 filetype plugin indent on
