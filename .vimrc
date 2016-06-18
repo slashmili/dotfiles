@@ -101,3 +101,6 @@ cnoremap <C-a>  <Home>
 "vimrc config helpers
 nnoremap <Leader>e :e ~/.vimrc<CR>
 nnoremap <Leader>r :source ~/.vimrc<CR>
+
+"Grep for current word in git
+noremap <c-g> :Ggrep <cword><CR>
