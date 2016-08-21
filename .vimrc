@@ -14,7 +14,6 @@ Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'ntpeters/vim-better-whitespace'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-ruby/vim-ruby'
-Plugin 'joonty/vdebug'
 Plugin 'tpope/vim-surround'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'avakhov/vim-yaml'
@@ -23,6 +22,12 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'morhetz/gruvbox'
 Plugin 'slashmili/alchemist.vim'
 Plugin 'tpope/vim-endwise'
+Plugin 'lucidstack/hex.vim'
+Plugin 'scrooloose/nerdtree'
+if has('nvim')
+    Plugin 'Shougo/deoplete.nvim'
+end
+Plugin 'isRuslan/vim-es6'
 
 call vundle#end()
 filetype plugin indent on
