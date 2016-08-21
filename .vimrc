@@ -61,7 +61,7 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "norm
 map <Leader>b :CtrlPBuffer<CR>
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\v\c(node_modules|_build|priv|deps|vendor|\.git|\.svn)$',
+    \ 'dir':  '\v\c(node_modules|_build|deps|vendor|\.git|\.svn)$',
     \ 'file': '\v\c\.(swf|bak|png|gif|mov|ico|jpg|pdf|jrxml)$',
     \}
 
