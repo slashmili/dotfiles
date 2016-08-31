@@ -75,20 +75,20 @@ function! s:query_path(root) abort
     let prefix = ''
   endif
   if &shellxquote == "'"
-    let path_check = prefix.'ruby -e "' . code . '"'
+    let path_check = prefix.'ruby --disable-gems -e "' . code . '"'
   else
-    let path_check = prefix."ruby -e '" . code . "'"
+    let path_check = prefix."ruby --disable-gems -e '" . code . "'"
   endif
 
   let cd = haslocaldir() ? 'lcd' : 'cd'
-  let cwd = getcwd()
+  let cwd = fnameescape(getcwd())
   try
     exe cd fnameescape(a:root)
     let path = split(system(path_check),',')
-    exe cd fnameescape(cwd)
+    exe cd cwd
     return path
   finally
-    exe cd fnameescape(cwd)
+    exe cd cwd
   endtry
 endfunction
 
@@ -184,7 +184,7 @@ if !exists("g:no_plugin_maps") && !exists("g:no_ruby_maps")
         \."| sil! exe 'unmap <buffer> [[' | sil! exe 'unmap <buffer> ]]' | sil! exe 'unmap <buffer> []' | sil! exe 'unmap <buffer> ]['"
         \."| sil! exe 'unmap <buffer> [m' | sil! exe 'unmap <buffer> ]m' | sil! exe 'unmap <buffer> [M' | sil! exe 'unmap <buffer> ]M'"
 
-  if maparg('im','n') == ''
+  if maparg('im','x') == '' && maparg('im','o') == '' && maparg('am','x') == '' && maparg('am','o') == ''
     onoremap <silent> <buffer> im :<C-U>call <SID>wrap_i('[m',']M')<CR>
     onoremap <silent> <buffer> am :<C-U>call <SID>wrap_a('[m',']M')<CR>
     xnoremap <silent> <buffer> im :<C-U>call <SID>wrap_i('[m',']M')<CR>
@@ -194,7 +194,7 @@ if !exists("g:no_plugin_maps") && !exists("g:no_ruby_maps")
           \."| sil! exe 'xunmap <buffer> im' | sil! exe 'xunmap <buffer> am'"
   endif
 
-  if maparg('iM','n') == ''
+  if maparg('iM','x') == '' && maparg('iM','o') == '' && maparg('aM','x') == '' && maparg('aM','o') == ''
     onoremap <silent> <buffer> iM :<C-U>call <SID>wrap_i('[[','][')<CR>
     onoremap <silent> <buffer> aM :<C-U>call <SID>wrap_a('[[','][')<CR>
     xnoremap <silent> <buffer> iM :<C-U>call <SID>wrap_i('[[','][')<CR>

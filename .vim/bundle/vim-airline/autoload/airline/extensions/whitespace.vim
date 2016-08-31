@@ -13,12 +13,9 @@ let s:long_format = get(g:, 'airline#extensions#whitespace#long_format', 'long[%
 let s:mixed_indent_file_format = get(g:, 'airline#extensions#whitespace#mixed_indent_file_format', 'mix-indent-file[%s]')
 let s:indent_algo = get(g:, 'airline#extensions#whitespace#mixed_indent_algo', 0)
 let s:skip_check_ft = {'make': ['indent', 'mixed-indent-file'] }
-
 let s:max_lines = get(g:, 'airline#extensions#whitespace#max_lines', 20000)
-
 let s:enabled = get(g:, 'airline#extensions#whitespace#enabled', 1)
-
-let s:c_like_langs = ['c', 'cpp', 'cuda', 'javascript', 'ld']
+let s:c_like_langs = get(g:, 'airline#extensions#c_like_langs', [ 'c', 'cpp', 'cuda', 'go', 'javascript', 'ld', 'php' ])
 
 function! s:check_mixed_indent()
   if s:indent_algo == 1
@@ -54,6 +51,7 @@ endfunction
 
 function! airline#extensions#whitespace#check()
   if &readonly || !&modifiable || !s:enabled || line('$') > s:max_lines
+          \ || get(b:, 'airline_whitespace_disabled', 0)
     return ''
   endif
 
@@ -108,7 +106,7 @@ function! airline#extensions#whitespace#check()
       endif
     endif
   endif
-  return b:airline_whitespace_check
+  return airline#util#shorten(b:airline_whitespace_check, 120, 9)
 endfunction
 
 function! airline#extensions#whitespace#toggle()
@@ -139,7 +137,13 @@ function! airline#extensions#whitespace#init(...)
   unlet! b:airline_whitespace_check
   augroup airline_whitespace
     autocmd!
-    autocmd CursorHold,BufWritePost * unlet! b:airline_whitespace_check
+    autocmd CursorHold,BufWritePost * call <sid>ws_refresh()
   augroup END
 endfunction
 
+function! s:ws_refresh()
+  unlet! b:airline_whitespace_check
+  if get(g:, 'airline_skip_empty_sections', 0)
+    exe ':AirlineRefresh'
+  endif
+endfunction

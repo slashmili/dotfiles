@@ -18,6 +18,11 @@ if !exists('g:ruby_indent_access_modifier_style')
   let g:ruby_indent_access_modifier_style = 'normal'
 endif
 
+if !exists('g:ruby_indent_block_style')
+  " Possible values: "expression", "do"
+  let g:ruby_indent_block_style = 'expression'
+endif
+
 setlocal nosmartindent
 
 " Now, set up our indentation expression and keys that trigger it.
@@ -100,6 +105,12 @@ let s:continuable_regex =
 
 " Regex that defines bracket continuations
 let s:bracket_continuation_regex = '%\@<!\%([({[]\)\s*\%(#.*\)\=$'
+
+" Regex that defines dot continuations
+let s:dot_continuation_regex = '%\@<!\.\s*\%(#.*\)\=$'
+
+" Regex that defines backslash continuations
+let s:backslash_continuation_regex = '%\@<!\\\s*$'
 
 " Regex that defines end of bracket continuation followed by another continuation
 let s:bracket_switch_continuation_regex = '^\([^(]\+\zs).\+\)\+'.s:continuation_regex
@@ -189,7 +200,17 @@ function s:GetMSL(lnum)
     " Otherwise, terminate search as we have found our MSL already.
     let line = getline(lnum)
 
-    if s:Match(msl, s:leading_operator_regex)
+    if !s:Match(msl, s:backslash_continuation_regex) &&
+          \ s:Match(lnum, s:backslash_continuation_regex)
+      " If the current line doesn't end in a backslash, but the previous one
+      " does, look for that line's msl
+      "
+      " Example:
+      "   foo = "bar" \
+      "     "baz"
+      "
+      let msl = lnum
+    elseif s:Match(msl, s:leading_operator_regex)
       " If the current line starts with a leading operator, keep its indent
       " and keep looking for an MSL.
       let msl = lnum
@@ -211,6 +232,18 @@ function s:GetMSL(lnum)
       " Example:
       "   method_call one,
       "     two,
+      "     three
+      "
+      let msl = lnum
+    elseif s:Match(lnum, s:dot_continuation_regex) &&
+          \ (s:Match(msl, s:bracket_continuation_regex) || s:Match(msl, s:block_continuation_regex))
+      " If the current line is a bracket continuation or a block-starter, but
+      " the previous is a dot, keep going to see if the previous line is the
+      " start of another continuation.
+      "
+      " Example:
+      "   parent.
+      "     method_call {
       "     three
       "
       let msl = lnum
@@ -417,7 +450,9 @@ function GetRubyIndent(...)
     if searchpair(escape(bs[0], '\['), '', bs[1], 'bW', s:skip_expr) > 0
       if line[col-1]==')' && col('.') != col('$') - 1
         let ind = virtcol('.') - 1
-      else
+      elseif g:ruby_indent_block_style == 'do'
+        let ind = indent(line('.'))
+      else " g:ruby_indent_block_style == 'expression'
         let ind = indent(s:GetMSL(line('.')))
       endif
     endif
@@ -442,12 +477,15 @@ function GetRubyIndent(...)
             \ strpart(line, col('.') - 1, 2) !~ 'do'
         " assignment to case/begin/etc, on the same line, hanging indent
         let ind = virtcol('.') - 1
+      elseif g:ruby_indent_block_style == 'do'
+        " align to line of the "do", not to the MSL
+        let ind = indent(line('.'))
       elseif getline(msl) =~ '=\s*\(#.*\)\=$'
-        " in the case of assignment to the msl, align to the starting line,
-        " not to the msl
+        " in the case of assignment to the MSL, align to the starting line,
+        " not to the MSL
         let ind = indent(line('.'))
       else
-        " align to the msl
+        " align to the MSL
         let ind = indent(msl)
       endif
     endif
@@ -514,7 +552,10 @@ function GetRubyIndent(...)
   if s:Match(lnum, s:block_regex)
     let msl = s:GetMSL(lnum)
 
-    if getline(msl) =~ '=\s*\(#.*\)\=$'
+    if g:ruby_indent_block_style == 'do'
+      " don't align to the msl, align to the "do"
+      let ind = indent(lnum) + sw
+    elseif getline(msl) =~ '=\s*\(#.*\)\=$'
       " in the case of assignment to the msl, align to the starting line,
       " not to the msl
       let ind = indent(lnum) + sw
@@ -562,7 +603,7 @@ function GetRubyIndent(...)
       if s:Match(line('.'), s:ruby_indent_keywords)
         return indent('.') + sw
       else
-        return indent('.')
+        return indent(s:GetMSL(line('.')))
       endif
     else
       call cursor(clnum, vcol)

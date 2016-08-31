@@ -73,7 +73,7 @@ function! s:get_git_untracked(file)
   if has_key(s:untracked_git, a:file)
     let untracked = s:untracked_git[a:file]
   else
-    let output    = system('git status --porcelain -- '. a:file)
+    let output    = system('git status --porcelain -- '. shellescape(a:file))
     if output[0:1] is# '??' && output[3:-2] is? a:file
       let untracked = get(g:, 'airline#extensions#branch#notexists', g:airline_symbols.notexists)
     endif
@@ -92,7 +92,7 @@ function! s:get_hg_untracked(file)
     if has_key(s:untracked_hg, a:file)
       let untracked = s:untracked_hg[a:file]
     else
-      let untracked = (system('hg status -u -- '. a:file)[0] is# '?'  ?
+      let untracked = (system('hg status -u -- '. shellescape(a:file))[0] is# '?'  ?
             \ get(g:, 'airline#extensions#branch#notexists', g:airline_symbols.notexists) : '')
       let s:untracked_hg[a:file] = untracked
     endif
@@ -117,7 +117,11 @@ function! airline#extensions#branch#head()
   let l:vcs_priority = get(g:, "airline#extensions#branch#vcs_priority", ["git", "mercurial"])
   let found_fugitive_head = 0
 
-  let l:git_head = s:get_git_branch(expand("%:p:h"))
+  if exists("*fnamemodify")
+    let l:git_head = s:get_git_branch(fnamemodify(resolve(@%), ":p:h"))
+  else
+    let l:git_head = s:get_git_branch(expand("%:p:h"))
+  endif
   let l:hg_head = s:get_hg_branch()
 
   if !empty(l:git_head)
@@ -141,6 +145,7 @@ function! airline#extensions#branch#head()
       endif
     endif
   else
+    let b:airline_head = get(b:, 'airline_head', '')
     for vcs in l:vcs_priority
       if has_key(l:heads, vcs)
         if !empty(b:airline_head)
@@ -161,6 +166,8 @@ function! airline#extensions#branch#head()
   if empty(b:airline_head) || !found_fugitive_head && !s:check_in_path()
     let b:airline_head = ''
   endif
+  let minwidth = empty(get(b:, 'airline_hunks', '')) ? 14 : 7
+  let b:airline_head = airline#util#shorten(b:airline_head, 120, minwidth)
   return b:airline_head
 endfunction
 
