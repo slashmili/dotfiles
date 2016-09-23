@@ -109,3 +109,12 @@ nnoremap <Leader>r :source ~/.vimrc<CR>
 
 "Grep for current word in git
 noremap <c-g> :Ggrep <cword><CR>
+
+"\g open Gstate window
+nnoremap <Leader>g :Gstatus<CR>
+
+"<UP> goes through the history where starts with text
+cnoremap <C-p>  <UP>
+
+"Switch between last buffers
+nnoremap <C-\> :e #<CR>
