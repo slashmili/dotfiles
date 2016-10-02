@@ -24,6 +24,7 @@ Plugin 'slashmili/alchemist.vim'
 Plugin 'tpope/vim-endwise'
 Plugin 'lucidstack/hex.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'lambdatoast/elm.vim'
 if has('nvim')
     Plugin 'Shougo/deoplete.nvim'
 end
