@@ -119,3 +119,6 @@ cnoremap <C-p>  <UP>
 
 "Switch between last buffers
 nnoremap <C-\> :e #<CR>
+
+"Switch between last buffers
+inoremap <C-\> <Esc>:e #<CR>
