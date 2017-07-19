@@ -29,6 +29,9 @@ if has('nvim')
     Plugin 'Shougo/deoplete.nvim'
 end
 Plugin 'isRuslan/vim-es6'
+Plugin 'vim-scripts/SyntaxRange'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'elmcast/elm-vim'
 
 call vundle#end()
 filetype plugin indent on
@@ -62,8 +65,8 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "norm
 map <Leader>b :CtrlPBuffer<CR>
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\v\c(node_modules|_build|deps|vendor|\.git|\.svn)$',
-    \ 'file': '\v\c\.(swf|bak|png|gif|mov|ico|jpg|pdf|jrxml)$',
+    \ 'dir':  '\v\c(elm-stuff|node_modules|_build|deps|vendor|\.git|\.svn)$',
+    \ 'file': '\v\c\.(swf|bak|png|gif|mov|ico|jpg|pdf|jrxml|o)$',
     \}
 
 
@@ -93,7 +96,7 @@ inoremap jj <Esc>
 nnoremap <C-k> :bd<CR>
 
 "Toggle spell checker
-nnoremap <leader>s :set spell!<CR>
+"nnoremap <leader>s :set spell!<CR>
 
 "Clean whitespace at the end of the lines
 nnoremap <silent> <Leader><space> :StripWhitespace<CR>
