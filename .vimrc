@@ -1,59 +1,87 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'bling/vim-airline'
-Plugin 'ctrlpvim/ctrlp.vim'
-Plugin 'ntpeters/vim-better-whitespace'
-Plugin 'tpope/vim-fugitive'
-Plugin 'vim-ruby/vim-ruby'
-Plugin 'tpope/vim-surround'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'avakhov/vim-yaml'
-Plugin 'elixir-lang/vim-elixir'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'morhetz/gruvbox'
-Plugin 'slashmili/alchemist.vim'
-Plugin 'tpope/vim-endwise'
-Plugin 'lucidstack/hex.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'lambdatoast/elm.vim'
-if has('nvim')
-    Plugin 'Shougo/deoplete.nvim'
-end
-Plugin 'isRuslan/vim-es6'
-Plugin 'vim-scripts/SyntaxRange'
-Plugin 'easymotion/vim-easymotion'
-Plugin 'elmcast/elm-vim'
-
-call vundle#end()
-filetype plugin indent on
-syntax on
-
-
-set laststatus=2
-
 set nocompatible
-se nostartofline
+if &compatible
+  " `:set nocp` has many side effects. Therefore this should be done
+  " only when 'compatible' is set.
+  set nocompatible
+endif
+
+if exists('*minpac#init')
+  call minpac#init()
+  "Tools
+  call minpac#add('k-takata/minpac', {'type': 'opt'})
+  call minpac#add('tpope/vim-unimpaired')
+  call minpac#add('bling/vim-airline')
+  call minpac#add('tpope/vim-surround')
+  call minpac#add('janko-m/vim-test')
+  call minpac#add('prabirshrestha/async.vim')
+  call minpac#add('prabirshrestha/asyncomplete.vim')
+  call minpac#add('tpope/vim-obsession')
+  call minpac#add('jeffkreeftmeijer/vim-numbertoggle')
+  call minpac#add('tpope/vim-endwise')
+
+  "Lookup files
+  call minpac#add('mhinz/vim-grepper')
+  call minpac#add('ctrlpvim/ctrlp.vim')
+
+  "Git
+  call minpac#add('airblade/vim-gitgutter')
+  call minpac#add('tpope/vim-fugitive')
+
+  "Language Packages
+  call minpac#add('elixir-lang/vim-elixir')
+  call minpac#add('slashmili/alchemist.vim')
+  call minpac#add('rust-lang/rust.vim')
+  call minpac#add('racer-rust/vim-racer')
+  call minpac#add('keremc/asyncomplete-racer.vim')
+  call minpac#add('tpope/vim-scriptease')
+  call minpac#add('pangloss/vim-javascript')
+endif
+
+
+" Define user commands for updating/cleaning the plugins.
+" Each of them loads minpac, reloads .vimrc to register the
+" information of plugins, then performs the task.
+command! PackUpdate packadd minpac | source $MYVIMRC | call minpac#update('', {'do': 'call minpac#status()'})
+command! PackClean  packadd minpac | source $MYVIMRC | call minpac#clean()
+command! PackStatus packadd minpac | source $MYVIMRC | call minpac#status()
+
+syntax on
+filetype plugin indent on
+set encoding=utf-8 
+
+"make cursor stay put when switching buffers
+set nostartofline
+
 set autoindent
-set incsearch
-set nohlsearch
-set fdm=marker
-set hlsearch
-set wildmenu
-set ignorecase
-set hidden
-set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 set number
 set scrolloff=5
+language en_US
+
+"Search while typing
+set incsearch
+
+"Search case insensitive
+set ignorecase
+
+"Highlight search terms
+set hlsearch
+
+"command-line completion operates in an enhanced mode
+set wildmenu
+
+"opening a new file when the current buffer has unsaved changes causes files to be hidden instead of closed
+set hidden
+
+"make the backspace works
 set backspace=indent,eol,start
+
+"make current line bold
+set cursorline
+highlight   CursorLine    term=NONE    cterm=bold
+
+" Highlight matching parens, brackets, etc. (like emacs)
+set showmatch
+
 
 "Restore cursor to file position in previous editing session
 ""http://vim.wikia.com/wiki/Restore_cursor_to_file_position_in_previous_editing_session
@@ -62,44 +90,15 @@ set backspace=indent,eol,start
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
 
-map <Leader>b :CtrlPBuffer<CR>
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_custom_ignore = {
-    \ 'dir':  '\v\c(elm-stuff|node_modules|_build|deps|vendor|\.git|\.svn)$',
-    \ 'file': '\v\c\.(swf|bak|png|gif|mov|ico|jpg|pdf|jrxml|o)$',
-    \}
-
-
-set background=dark
-colorscheme gruvbox
-set cursorline
-highlight   CursorLine    term=NONE    cterm=bold
-set cursorcolumn
-
-
-" :help last-position-jump
-autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-
-" set 2 space tab for ruby file
-autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
-
-" to open quickfix window after running Ggrep
-autocmd QuickFixCmdPost *grep* cwindow
+""""""""" MAPPINGS
+"map jj to go to normal mode
+inoremap jj <Esc>
 
 "Clear search highlight
 nnoremap <C-l> :nohlsearch<CR>
 
-"map jj to go to normal mode
-inoremap jj <Esc>
-
 "Kill the opened buffer
 nnoremap <C-k> :bd<CR>
-
-"Toggle spell checker
-"nnoremap <leader>s :set spell!<CR>
-
-"Clean whitespace at the end of the lines
-nnoremap <silent> <Leader><space> :StripWhitespace<CR>
 
 "Break the line from cursor
 nnoremap <C-j> i<CR><Esc>
@@ -111,17 +110,60 @@ cnoremap <C-a>  <Home>
 nnoremap <Leader>e :e ~/.vimrc<CR>
 nnoremap <Leader>r :source ~/.vimrc<CR>
 
-"Grep for current word in git
-noremap <c-g> :Ggrep <cword><CR>
-
-"\g open Gstate window
-nnoremap <Leader>g :Gstatus<CR>
-
-"<UP> goes through the history where starts with text
-cnoremap <C-p>  <UP>
 
 "Switch between last buffers
 nnoremap <C-\> :e #<CR>
 
-"Switch between last buffers
-inoremap <C-\> <Esc>:e #<CR>
+"<UP> goes through the history where starts with text
+cnoremap <C-p>  <UP>
+
+"Delete to end of command line in Vim
+cnoremap <C-k> <C-\>e(strpart(getcmdline(), 0, getcmdpos() - 1))<CR>
+
+silent execute '!mkdir -p /tmp/vim-stuff'
+set backupdir=/tmp/vim-stuff//
+set directory=/tmp/vim-stuff//
+set undodir=/tmp/vim-stuff//
+
+""""""""" PLUGIN MAPPINGS
+
+"Grep for current word in git
+noremap <c-g> :Grepper -cword -noprompt<CR>
+
+"GitStatus
+noremap <Leader>g :Gstatus<CR>
+
+"Run test
+nnoremap <Leader>t :TestNearest<CR>
+
+"Open Buffer list of CtrlP
+map <Leader>b :CtrlPBuffer<CR>
+
+
+""""""""" PLUGIN CONFS
+
+au User asyncomplete_setup call asyncomplete#register_source({
+    \ 'name': 'alchemist',
+    \ 'whitelist': ['elixir'],
+    \ 'completor': function('asyncomplete#sources#elixir#completor'),
+    \ 'config': { },
+    \ })
+
+let g:ctrlp_user_command = 'rg --files'
+
+let g:grepper = {}
+let g:grepper.tools = ['git', 'rg']
+
+if has('nvim')
+  let test#strategy = 'basic'
+else
+  let test#strategy = 'vimterminal'
+endif
+
+autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#racer#get_source_options({'config': {} }))
+au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap K <Plug>(rust-doc)
+
+"""""""""""" Elixir Format
+autocmd BufWritePost *.exs silent :!mix format %
+autocmd BufWritePost *.ex silent :!mix format %

@@ -1,1 +1,0 @@
-/Users/milad/.vimrc
