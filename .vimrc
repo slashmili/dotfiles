@@ -167,3 +167,7 @@ au FileType rust nmap K <Plug>(rust-doc)
 """""""""""" Elixir Format
 autocmd BufWritePost *.exs silent :!mix format %
 autocmd BufWritePost *.ex silent :!mix format %
+
+"""""""""""" JS indention
+"autocmd FileType javascript setlocal shiftwidth=2 tabstop=2
+autocmd FileType javascript set tabstop=2|set shiftwidth=2|set expandtab
