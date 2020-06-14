@@ -9,11 +9,22 @@ Setup vim settings
 =================
 ```
 $ ln -s ~/.dotfiles/.vim ~/.vim
-$ echo "source ~/.dotfiles/.vimrc" >> ~/.vimrc
+$ ln -s ~/.dotfiles/.vimrc ~/.vimrc
+$ ln -s ~/.dotfiles/.vim/pack ~/.config/nvim/pack
+$ ln -s ~/.dotfiles/.vimrc ~/.config/nvim/init.vim
+$ git clone https://github.com/k-takata/minpac.git  ~/.dotfiles/.vim/pack/minpac/opt/minpac
+$ vim -c "PackUpdate"
 ```
 
 Bashrc settings
 ===============
 ```
 $ echo "source ~/.dotfiles/.bashrc" >> ~/.bashrc
+```
+
+
+Packages
+=========
+```
+$ brew install rg
 ```
