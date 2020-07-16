@@ -55,7 +55,7 @@ set nostartofline
 set autoindent
 set number
 set scrolloff=5
-language en_US
+language en_US.UTF-8
 
 "Search while typing
 set incsearch
