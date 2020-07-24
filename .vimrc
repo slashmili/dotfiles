@@ -13,6 +13,7 @@ if exists('*minpac#init')
   call minpac#add('bling/vim-airline')
   call minpac#add('tpope/vim-surround')
   call minpac#add('janko-m/vim-test')
+  call minpac#add('benmills/vimux')
   call minpac#add('prabirshrestha/async.vim')
   call minpac#add('prabirshrestha/asyncomplete.vim')
   call minpac#add('tpope/vim-obsession')
@@ -154,11 +155,7 @@ let g:ctrlp_user_command = 'rg --files'
 let g:grepper = {}
 let g:grepper.tools = ['git', 'rg']
 
-if has('nvim')
-  let test#strategy = 'basic'
-else
-  let test#strategy = 'vimterminal'
-endif
+let test#strategy = 'vimux'
 
 autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#racer#get_source_options({'config': {} }))
 au FileType rust nmap gd <Plug>(rust-def)
