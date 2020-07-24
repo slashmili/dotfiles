@@ -92,6 +92,9 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "norm
 
 
 """"""""" MAPPINGS
+"a hint for prabirshrestha/asyncomplete.vim to close autocomplete popup
+inoremap <expr> <C-y> pumvisible() ? asyncomplete#close_popup() : "\<C-y>"
+
 "map jj to go to normal mode
 inoremap jj <Esc>
 
