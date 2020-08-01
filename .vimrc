@@ -46,6 +46,11 @@ command! PackUpdate packadd minpac | source $MYVIMRC | call minpac#update('', {'
 command! PackClean  packadd minpac | source $MYVIMRC | call minpac#clean()
 command! PackStatus packadd minpac | source $MYVIMRC | call minpac#status()
 
+if filereadable(expand('<sfile>:p:h') . '/pack/themes/start/dracula/README.md')
+  packadd! dracula
+  colorscheme dracula
+endif
+
 syntax on
 filetype plugin indent on
 set encoding=utf-8 
