@@ -16,6 +16,7 @@ if exists('*minpac#init')
   call minpac#add('benmills/vimux')
   call minpac#add('prabirshrestha/async.vim')
   call minpac#add('prabirshrestha/asyncomplete.vim')
+  call minpac#add('prabirshrestha/asyncomplete-buffer.vim')
   call minpac#add('tpope/vim-obsession')
   call minpac#add('jeffkreeftmeijer/vim-numbertoggle')
   call minpac#add('tpope/vim-endwise')
@@ -168,6 +169,17 @@ let test#strategy = 'vimux'
 autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#racer#get_source_options({'config': {} }))
 au FileType rust nmap gd <Plug>(rust-def)
 au FileType rust nmap K <Plug>(rust-doc)
+
+
+autocmd User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+    \ 'name': 'buffer',
+    \ 'allowlist': ['*'],
+    \ 'blocklist': ['go'],
+    \ 'completor': function('asyncomplete#sources#buffer#completor'),
+    \ 'config': {
+    \    'max_buffer_size': 5000000,
+    \  },
+    \ }))
 
 """""""""""" Elixir Format
 autocmd BufWritePost *.exs silent :!mix format %
