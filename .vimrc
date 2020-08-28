@@ -130,6 +130,9 @@ cnoremap <C-p>  <UP>
 "Delete to end of command line in Vim
 cnoremap <C-k> <C-\>e(strpart(getcmdline(), 0, getcmdpos() - 1))<CR>
 
+"Search for visually selected text by typing //
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+
 silent execute '!mkdir -p /tmp/vim-stuff'
 set backupdir=/tmp/vim-stuff//
 set directory=/tmp/vim-stuff//
