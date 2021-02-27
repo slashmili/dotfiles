@@ -1,3 +1,5 @@
+[init]
+	defaultBranch = main
 [user]
     name = Milad
     signingkey = 9E075182D4227D5E196D97108A2DDD3A02EB497C
