@@ -5,7 +5,8 @@ if &compatible
   set nocompatible
 endif
 
-if exists('*minpac#init')
+packadd minpac
+if exists('g:loaded_minpac')
   call minpac#init()
   "Tools
   call minpac#add('k-takata/minpac', {'type': 'opt'})
