@@ -134,10 +134,10 @@ cnoremap <C-k> <C-\>e(strpart(getcmdline(), 0, getcmdpos() - 1))<CR>
 "Search for visually selected text by typing //
 vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
 
-silent execute '!mkdir -p /tmp/vim-stuff'
-set backupdir=/tmp/vim-stuff//
-set directory=/tmp/vim-stuff//
-set undodir=/tmp/vim-stuff//
+silent execute '!mkdir -p /tmp/vim-stuff-' + $USER
+set backupdir=/tmp/vim-stuff-$USER//
+set directory=/tmp/vim-stuff-$USER//
+set undodir=/tmp/vim-stuff-$USER//
 
 """"""""" PLUGIN MAPPINGS
 
