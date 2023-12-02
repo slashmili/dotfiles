@@ -1,3 +1,4 @@
+" This config is not in used anymore, check .config/nvim/init.lua
 set nocompatible
 if &compatible
   " `:set nocp` has many side effects. Therefore this should be done
