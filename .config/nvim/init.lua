@@ -34,11 +34,24 @@ vim.opt.scrolloff = 9
 vim.opt.number = true
 vim.cursorline = true
 
--- Jump to begining in Vim's command line
-vim.api.nvim_set_keymap('c', '<C-a>', '<Home>', {noremap = true, silent = false})
+-- key mappings in command-line mode
+vim.cmd [[
+  "Jump to home in Vim's command line
+  cnoremap <C-a>  <Home>
+  "<UP> goes through the history where starts with text
+  cnoremap <C-p>  <UP>
+  "Delete to end of command line in Vim
+  cnoremap <C-k> <C-\>e(strpart(getcmdline(), 0, getcmdpos() - 1))<CR>
+]]
+
+
+-- key mappings in normal mode to manage buffers
+vim.cmd [[
+  "Kill the opened buffer
+  nnoremap <C-k> :bd<CR>
+  "Toggle between last two buffers
+  nnoremap <C-\> :e #<CR>
+]]
 
 -- map jj to go to normal mode
 vim.api.nvim_set_keymap('i', 'jj', '<Esc>', {noremap = true, silent = true})
-
--- Toggle between last two buffers
-vim.api.nvim_set_keymap('n', '<C-\\>', ':e #<CR>', {noremap = true, silent = true})
