@@ -36,3 +36,7 @@ vim.cursorline = true
 
 -- Jump to begining in Vim's command line
 vim.api.nvim_set_keymap('c', '<C-a>', '<Home>', {noremap = true, silent = false})
+
+-- map jj to go to normal mode
+vim.api.nvim_set_keymap('i', 'jj', '<Esc>', {noremap = true, silent = true})
+
