@@ -16,7 +16,8 @@ require("lazy").setup("plugins")
 vim.opt.hidden = true
 vim.opt.scrolloff = 9
 vim.opt.number = true
-vim.cursorline = true
+vim.opt.cursorline = true
+vim.opt.ignorecase = true
 
 vim.cmd [[
   "vimrc todo config helpers
