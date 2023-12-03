@@ -40,3 +40,5 @@ vim.api.nvim_set_keymap('c', '<C-a>', '<Home>', {noremap = true, silent = false}
 -- map jj to go to normal mode
 vim.api.nvim_set_keymap('i', 'jj', '<Esc>', {noremap = true, silent = true})
 
+-- Toggle between last two buffers
+vim.api.nvim_set_keymap('n', '<C-\\>', ':e #<CR>', {noremap = true, silent = true})
