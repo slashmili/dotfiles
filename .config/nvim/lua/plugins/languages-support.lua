@@ -60,7 +60,7 @@ return {
   {
     "vim-test/vim-test",
     keys = {
-      {"<Leader>t", "<cmd>TestNearest<CR>", desc="Test run close to current line"}
+      {"<Leader>t", "<cmd>TestNearest<CR>", desc="Runs the test"},
     },
     config = function ()
       local function ElixirPryTransform(cmd)
@@ -71,6 +71,7 @@ return {
       vim.g['test#transformation'] = 'elixir'
 
       vim.g['test#strategy'] = 'neovim'
+      vim.api.nvim_set_keymap('i', '<Leader>t', '<Esc> :w<CR> :TestNearest<CR>', {noremap = true, silent = true})
     end
   },
   {
