@@ -33,3 +33,6 @@ vim.opt.hidden = true
 vim.opt.scrolloff = 9
 vim.opt.number = true
 vim.cursorline = true
+
+-- Jump to begining in Vim's command line
+vim.api.nvim_set_keymap('c', '<C-a>', '<Home>', {noremap = true, silent = false})
