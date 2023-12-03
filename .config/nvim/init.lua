@@ -11,28 +11,18 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins")
--- require("lazy").setup(plugins, opts)
-
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>e",
-  ":e ~/.config/nvim/init.lua<CR>",
-  { noremap = true }
- )
-
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>r",
-  ":source ~/.config/nvim/init.lua<CR>",
-  { noremap = true }
- )
-
 
 -- opening a new file when the current buffer has unsaved changes causes files to be hidden instead of closed
 vim.opt.hidden = true
 vim.opt.scrolloff = 9
 vim.opt.number = true
 vim.cursorline = true
+
+vim.cmd [[
+  "vimrc todo config helpers
+   nnoremap <Leader>e :e ~/.config/nvim/init.lua<CR>
+   nnoremap <Leader>r :source ~/.config/nvim/init.lua<CR>
+]]
 
 -- key mappings in command-line mode
 vim.cmd [[
