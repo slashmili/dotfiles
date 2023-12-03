@@ -50,6 +50,7 @@ return {
       ensure_installed = { "lua", "vim", "elixir", "eex", "heex" },
       sync_install = false,
       auto_install = true,
+      indent = { enable = true },
       highlight = {
         enable = true,
       },
