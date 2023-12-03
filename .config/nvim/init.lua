@@ -18,6 +18,8 @@ vim.opt.scrolloff = 9
 vim.opt.number = true
 vim.opt.cursorline = true
 vim.opt.ignorecase = true
+-- Highlight matching parens, brackets, etc.
+vim.opt.showmatch = true
 
 vim.cmd [[
   "vimrc todo config helpers
