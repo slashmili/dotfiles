@@ -6,5 +6,17 @@ return {
 	{"<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "live grep"},
 	{"<leader>b", "<cmd>Telescope buffers theme=dropdown previewer=false<cr>", desc = "find from buffers"},
 	{"<C-p>", "<cmd>Telescope git_files theme=dropdown previewer=false<cr>", desc = "find git files"},
-      }
+      },
+      config = function()
+        require "telescope".setup {
+          defaults = {
+            mappings = {
+              i = {
+                ["<C-a>"] = function() vim.cmd "normal! I" end,
+                ["<C-e>"] = function() vim.cmd "normal! $" end,
+              }
+            }
+          }
+        }
+       end
     }
