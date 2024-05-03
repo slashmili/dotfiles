@@ -1,22 +1,23 @@
 modmap:
   - name: Swap Left Super/Alt
+    device:
+      not: ['ZSA Technology Labs ErgoDox EZ', 'Input:Club Infinity Ergodox (QMK)']
     remap:
       CapsLock: Ctrl_L
-
-default_mode: default
 keymap:
   - name: Mac-Super-Bindings
-    window:
-      not: ['konsole', 'Konsole', 'alacritty']
     remap:
       Super-a: Ctrl-a
       Super-tab: Alt-tab
-      Super-c: Ctrl-c
+      Super-c: Copy
       Super-v: Ctrl-v
       Super-z: Ctrl-z
       Super-x: Ctrl-x
       Super-l: Ctrl-l
       Super-f: Ctrl-f
+      Super-w: Ctrl-w
+      Super-t: Ctrl-t
+      Super-r: Ctrl-r
   - name: Mac-Ctrl-Bindings
     application:
       not: ['konsole', 'Konsole', 'alacritty', 'Alacritty']
@@ -25,8 +26,3 @@ keymap:
       ctrl-e: End
       ctrl-d: Delete
       ctrl-k: [Shift-End, Delete]
-  - name: Mac-Super-Bindings-in-terminal
-    application:
-      only: ['Konsole', 'konsole', 'alacritty']
-    remap:
-      Super-c: Ctrl_L-Shift_L-c
