@@ -1,0 +1,12 @@
+#!/bin/bash
+
+CURRENT_THEME=$(grep -Po 'LookAndFeelPackage=\K.*' ~/.config/kdeglobals)
+
+if [ "$CURRENT_THEME" == "org.kde.breeze.desktop" ]; then
+  sed -i 's/catppuccin_latte/catppuccin_mocha/' ~/.config/alacritty/alacritty.toml
+  lookandfeeltool -a org.kde.breezedark.desktop
+fi
+if [ "$CURRENT_THEME" == "org.kde.breezedark.desktop" ]; then
+  sed -i 's/catppuccin_mocha/catppuccin_latte/' ~/.config/alacritty/alacritty.toml
+  lookandfeeltool -a org.kde.breeze.desktop
+fi
