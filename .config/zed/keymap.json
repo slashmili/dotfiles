@@ -1,0 +1,19 @@
+[
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      "j j": "vim::NormalBefore"
+    }
+  },
+  {
+      "context": "Editor && vim_mode == normal && (vim_operator == none || vim_operator == n) && !VimWaiting",
+      "bindings": {
+        // put key-bindings here if you want them to work only in normal mode
+        "g d": "editor::GoToDefinition",
+        "g r": "editor::FindAllReferences",
+        "[ d": "editor::GoToPrevDiagnostic",
+        "] d": "editor::GoToDiagnostic",
+        "z a": "editor::Fold"
+      }
+  }
+]
