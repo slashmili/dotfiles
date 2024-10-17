@@ -44,7 +44,31 @@ vim.cmd [[
   nnoremap <C-k> :bd<CR>
   "Toggle between last two buffers
   nnoremap <C-\> :e #<CR>
+
+  noremap <C-j> i<CR><ESC>
+]]
+
+-- key mappings in visual mode
+vim.cmd [[
+  xnoremap <leader>p "_dp
+]]
+
+-- show spaces and tabs with . and >
+vim.cmd [[  "
+  set list
+  set listchars+=space:.
 ]]
 
 -- map jj to go to normal mode
 vim.api.nvim_set_keymap('i', 'jj', '<Esc>', {noremap = true, silent = true})
+
+
+-- configure tabs for js/css/lua
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "javascript", "css", "lua"},
+  callback = function()
+    vim.opt_local.tabstop = 2
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.expandtab = true
+  end,
+})
