@@ -50,6 +50,7 @@ vim.cmd [[
 
 -- key mappings in visual mode
 vim.cmd [[
+  "Paste without yanking
   xnoremap <leader>p "_dp
 ]]
 
@@ -72,3 +73,9 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.expandtab = true
   end,
 })
+
+-- jump to last position
+vim.cmd [[
+  " :help last-position-jump
+  autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+]]
