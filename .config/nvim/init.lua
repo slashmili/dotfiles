@@ -53,7 +53,7 @@ vim.cmd [[
 -- key mappings in visual mode
 vim.cmd [[
   "Paste without yanking
-  xnoremap <leader>p "_dp
+  xnoremap <leader>p "_dP
 ]]
 
 -- show spaces and tabs with . and >
