@@ -15,6 +15,7 @@ return {
 	},
 	{"<leader>b", "<cmd>Telescope buffers theme=dropdown previewer=false<cr>", desc = "find from buffers"},
 	{"<C-p>", "<cmd>Telescope git_files theme=dropdown previewer=false<cr>", desc = "find git files"},
+	{"<M-p>", "<cmd>lua require(\"telescope.builtin\").resume()<cr>", desc = "resume the search"},
 	{"π", "<cmd>Telescope resume<cr>", desc = "resume search by option+p"},
       },
       config = function()
@@ -22,6 +23,7 @@ return {
           defaults = {
             mappings = {
               i = {
+                ["<C-o>"] = function(prompt_bufnr) require("telescope.actions").select_default(prompt_bufnr) require("telescope.builtin").resume() end,
                 ["<C-a>"] = function() vim.cmd "normal! I" end,
                 ["<C-e>"] = function() vim.cmd "normal! $" end,
               }
