@@ -38,13 +38,15 @@ vim.cmd [[
 ]]
 
 
--- key mappings in normal mode to manage buffers
+-- key mappings in normal mode
 vim.cmd [[
   "Kill the opened buffer
   nnoremap <C-k> :bd<CR>
   "Toggle between last two buffers
   nnoremap <C-\> :e #<CR>
 
+  " Yank path to current file to clipboard
+  nnoremap yp :let @+=expand("%")<CR>
   noremap <C-j> i<CR><ESC>
 ]]
 
