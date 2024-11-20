@@ -65,6 +65,13 @@ vim.cmd [[  "
 -- map jj to go to normal mode
 vim.api.nvim_set_keymap('i', 'jj', '<Esc>', {noremap = true, silent = true})
 
+if vim.loop.os_uname().sysname == 'Linux' then
+  -- Map Super+V to paste on Linux
+  vim.api.nvim_set_keymap('i', '<C-v>', '<C-r>+', { noremap = true, silent = true })
+  vim.cmd([[
+        cnoremap <C-v> <C-r>+
+        ]])
+end
 
 -- configure tabs for js/css/lua
 vim.api.nvim_create_autocmd("FileType", {
