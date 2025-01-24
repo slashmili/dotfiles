@@ -16,5 +16,11 @@ return {
       }
     },
     config = true
+  },
+  {
+    'FabijanZulj/blame.nvim',
+    opts = {
+      blame_options = { '-w' },
+    },
   }
 }
