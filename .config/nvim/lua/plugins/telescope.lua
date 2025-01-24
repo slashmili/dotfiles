@@ -14,7 +14,7 @@ return {
 	  'open live_grep with current world in the search bar'
 	},
 	{"<leader>b", "<cmd>Telescope buffers theme=dropdown previewer=false<cr>", desc = "find from buffers"},
-	{"<C-p>", "<cmd>Telescope git_files theme=dropdown previewer=false<cr>", desc = "find git files"},
+	{"<C-p>", "<cmd>Telescope git_files previewer=false<cr>", desc = "find git files"},
 	{"<M-p>", "<cmd>lua require(\"telescope.builtin\").resume()<cr>", desc = "resume the search"},
 	{"π", "<cmd>Telescope resume<cr>", desc = "resume search by option+p"},
       },
