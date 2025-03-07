@@ -87,5 +87,12 @@ return {
       "neovim/nvim-lspconfig", -- optional
     },
     opts = {} -- your configuration
+  },
+  {
+    'laytan/tailwind-sorter.nvim',
+    dependencies = {'nvim-treesitter/nvim-treesitter', 'nvim-lua/plenary.nvim'},
+    build = 'cd formatter && npm ci && npm run build',
+    on_save_enabled= false,
+    config = true
   }
 }
