@@ -4,24 +4,44 @@ modmap:
       not: ['ZSA Technology Labs ErgoDox EZ', 'Input:Club Infinity Ergodox (QMK)']
     remap:
       CapsLock: Ctrl_L
+
+default_mode: default
 keymap:
+  - name: Pass-through to KDE
+    remap:
+      Super-Shift-a: Super-a
+      Super-Shift-p: Super-p
+      Super-Shift-l: Super-l
+      Super-Shift-t: Super-t
+      Super-Shift-b: Super-b
+      Super-Shift-g: Super-g
+
   - name: Mac-Super-Bindings
     remap:
       Super-a: Ctrl-a
       Super-tab: Alt-tab
       Super-c: Copy
-      Super-v: Ctrl-v
-      Super-z: Ctrl-z
-      Super-x: Ctrl-x
-      Super-l: Ctrl-l
-      Super-f: Ctrl-f
-      Super-w: Ctrl-w
-      Super-t: Ctrl-t
-      Super-r: Ctrl-r
+      Super-v: C-v
+      Super-z: C-z
+      Super-x: C-x
+      Super-l: C-l
+      Super-f: C-f
+      Super-w: C-w
+      Super-t: C-t
+      Super-r: C-r
+      Super-n: C-n
+      Super-p: C-p
+      Super-s: C-s
+      Super-q: Alt-F4
+      Super-b: C-b
   - name: Mac-Ctrl-Bindings
     application:
       not: ['konsole', 'Konsole', 'alacritty', 'Alacritty']
+    window:
+      not: ['konsole', 'Konsole', 'alacritty', 'Alacritty']
     remap:
+      ctrl-n: Down
+      ctrl-p: Up
       ctrl-a: Home
       ctrl-e: End
       ctrl-d: Delete
