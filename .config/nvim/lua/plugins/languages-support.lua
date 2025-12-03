@@ -3,7 +3,7 @@ return {
     "neovim/nvim-lspconfig", 
     config = function() 
       require'lspconfig'.elixirls.setup{
-           cmd = { vim.fn.expand("~/.bin/elixir-ls/language_server.sh") };
+           cmd = { vim.fn.expand("~/.local/bin/elixir-ls/language_server.sh") };
       }
 
       -- Global mappings.
