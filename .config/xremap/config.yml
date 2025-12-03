@@ -33,7 +33,6 @@ keymap:
       Super-a: Ctrl-a
       Super-tab: Alt-tab
       Super-c: Copy
-      Super-v: C-v
       Super-z: C-z
       Super-x: C-x
       Super-l: C-l
@@ -46,11 +45,22 @@ keymap:
       Super-s: C-s
       Super-q: Alt-F4
       Super-b: C-b
+      Super-k: C-k
+  - name: Mac-Super-V-in-terminal
+    application:
+      only: ['Alacritty']
+    remap:
+      Super-v: Paste
+  - name: Mac-Super-V-in-other
+    application:
+      not: ['Alacritty']
+    remap:
+      Super-v: C-v
   - name: Mac-Ctrl-Bindings
     application:
       not: ['konsole', 'Konsole', 'alacritty', 'Alacritty']
     window:
-      not: ['konsole', 'Konsole', 'alacritty', 'Alacritty']
+      not: ['konsole', 'Konsole', 'alacritty', 'Alacritty', 'tmux']
     remap:
       ctrl-n: Down
       ctrl-p: Up
