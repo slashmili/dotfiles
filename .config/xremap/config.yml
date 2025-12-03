@@ -9,12 +9,24 @@ default_mode: default
 keymap:
   - name: Pass-through to KDE
     remap:
+      # Switch workspace
       Super-Shift-a: Super-a
+      # Display selection
       Super-Shift-p: Super-p
+      # Lock
       Super-Shift-l: Super-l
+      # Toggle Tiles editor
       Super-Shift-t: Super-t
+      # Toggle Battery performance
       Super-Shift-b: Super-b
+      # Toggle grid view
       Super-Shift-g: Super-g
+      # Screenshoft
+      Super-Shift-s: Super-shift-s
+      # Toogle Overview
+      Super-Shift-w: Super-shift-w
+      # Show Clipboard Items
+      Super-Shift-v: Super-v
 
   - name: Mac-Super-Bindings
     remap:
