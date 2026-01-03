@@ -32,7 +32,7 @@ keymap:
     remap:
       Super-a: Ctrl-a
       Super-tab: Alt-tab
-      Super-c: Copy
+      Super-c: C-c
       Super-z: C-z
       Super-x: C-x
       Super-l: C-l
@@ -51,6 +51,7 @@ keymap:
       only: ['Alacritty']
     remap:
       Super-v: Paste
+      Super-c: Copy
   - name: Mac-Super-V-in-other
     application:
       not: ['Alacritty']
