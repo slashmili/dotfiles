@@ -64,8 +64,11 @@ return {
     },
     config = function ()
       local function ElixirPryTransform(cmd)
-        local modified_cmd = cmd:gsub('^mix%s*', '')
-        return "MIX_ENV=test iex --dbg pry -S mix do " .. modified_cmd .. " --trace + run -e 'System.halt'"
+         if cmd:match('^mix test') then
+            local modified_cmd = cmd:gsub('^mix%s*', '')
+            return "MIX_ENV=test iex --dbg pry -S mix do " .. modified_cmd .. " --trace + run -e 'System.halt'"
+         end
+         return cmd
       end
       vim.g['test#custom_transformations'] = {elixir = ElixirPryTransform}
       vim.g['test#transformation'] = 'elixir'
