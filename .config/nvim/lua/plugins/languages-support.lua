@@ -2,10 +2,14 @@ return {
   {
     "neovim/nvim-lspconfig", 
     config = function() 
-      require'lspconfig'.elixirls.setup{
-           cmd = { vim.fn.expand("~/.local/bin/elixir-ls/language_server.sh") };
-      }
-
+      vim.lsp.enable "expert"
+      vim.lsp.config("expert", {
+        settings = {
+          workspaceSymbols = {
+            minQueryLength = 0
+          }
+        }
+      })
       -- Global mappings.
       -- See `:help vim.diagnostic.*` for documentation on any of the below functions
       vim.keymap.set('n', '<space>e', vim.diagnostic.open_float)
